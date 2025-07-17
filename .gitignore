@@ -9,8 +9,5 @@
 !01.zsh/zshrc
 
 # ==== 02.git ====
-02.git/*
-!02.git/gitconfig
-!02.git/gitignore_global
 
 .tmp.driveupload

@@ -12,3 +12,5 @@
     br = branch
     ci = commit
     lg = log --oneline --decorate --graph --all
+[commit]
+	template = /Users/iurickvan/Documents/00.config/templates/gitmessage.txt

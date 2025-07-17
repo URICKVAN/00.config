@@ -1,0 +1,13 @@
+# ======== TÍTULO DEL COMMIT (máx 50 caracteres) ========
+# Escribe aquí un resumen breve y claro
+#
+# ======== DESCRIPCIÓN DETALLADA (opcional) ========
+# Explica los cambios, por qué se hicieron y cualquier contexto extra.
+#
+# Ejemplo:
+# - Lista de cambios relevantes
+# - Contexto adicional si aplica
+#
+# ======== REFERENCIAS (opcional) ========
+# Usa esta sección si quieres anotar algo extra
+
