@@ -1,0 +1,14 @@
+[user]
+    name = JEGR
+    email = urickvan7@gmail.com
+[core]
+    editor = nvim
+    excludesfile = /Users/iurickvan/Documents/00.config/02.git/gitignore_global
+[color]
+    ui = auto
+[alias]
+    st = status
+    co = checkout
+    br = branch
+    ci = commit
+    lg = log --oneline --decorate --graph --all

@@ -1,0 +1,16 @@
+# ==== 00.ssh ====
+00.ssh/*
+!00.ssh/confi
+!00.ssh/add_ssh_key.sh
+
+# ==== 01.zsh ====
+01.zsh/*
+!01.zsh/aliases.zsh
+!01.zsh/zshrc
+
+# ==== 02.git ====
+02.git/*
+!02.git/gitconfig
+!02.git/gitignore_global
+
+.tmp.driveupload

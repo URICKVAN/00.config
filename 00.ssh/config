@@ -1,0 +1,17 @@
+Host urepos
+    HostName 172.16.4.14
+    User sistemas
+    Port 22777
+    IdentityFile '/Users/iurickvan/Documents/00.config/00.ssh/nasserver/nasserver_ed25519'
+
+Host git-jegr
+    HostName github.com
+    User git
+    Port 22
+    IdentityFile /Users/iurickvan/Documents/00.config/00.ssh/git_jegr/git_jegr_ed25519
+# === siodserv ===
+Host siodserv
+    HostName 172.16.2.247
+    User diagnosys
+    Port 22777
+    IdentityFile /Users/iurickvan/Documents/00.config/00.ssh/siodserv/siodserv_ed25519

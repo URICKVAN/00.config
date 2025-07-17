@@ -1,0 +1,70 @@
+# ======================================================================
+# ARCHIVO CENTRALIZADO DE CONFIGURACIÓN ZSH
+# UBICACIÓN: /Users/iurickvan/Library/CloudStorage/OneDrive-Personal/00.config/zshrc
+#
+# Este archivo define mi configuración personalizada de Zsh usando Oh My Zsh.
+# Está pensado para ser usado mediante un enlace simbólico desde ~/.zshrc
+# en cada equipo donde instale oh-my-zsh.
+#
+# ======================================================================
+
+# Ruta donde está instalado oh-my-zsh (por defecto):
+export ZSH="$HOME/.oh-my-zsh"
+
+# Tema a utilizar (puedes cambiarlo por ejemplo a "agnoster" o "powerlevel10k/powerlevel10k")
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="jonathan"
+
+# Lista de plugins de oh-my-zsh a cargar
+plugins=(
+  git
+  z
+  colored-man-pages
+  sudo
+  extract
+)
+
+# Cargar oh-my-zsh
+source $ZSH/oh-my-zsh.sh
+
+# ======================================================================
+# OPCIONES ÚTILES DE ZSH
+# ======================================================================
+
+# Habilitar corrección automática de comandos
+ENABLE_CORRECTION="true"
+
+# Mostrar tiempo de ejecución si un comando tarda más de 10 segundos
+REPORTTIME=10
+
+# Habilitar autocompletado de directorios con TAB
+setopt AUTO_CD
+
+# Compartir el historial entre todas las sesiones
+setopt SHARE_HISTORY
+
+# Guardar el historial con timestamps
+HIST_STAMPS="yyyy-mm-dd"
+
+# ======================================================================
+# ALIAS Y CONFIGURACIONES PERSONALIZADAS
+# ======================================================================
+
+# Cargar alias centralizados si el archivo existe
+# Cargar alias centralizados si el archivo existe
+if [ -f "/Users/iurickvan/Documents/00.config/01.zsh/aliases.zsh" ]; then
+    source "/Users/iurickvan/Documents/00.config/01.zsh/aliases.zsh"
+fi
+# Ejemplo de alias local (puedes poner aquí también directamente):
+# alias gs='git status'
+
+# ======================================================================
+# EXPORTS Y OTRAS VARIABLES
+# ======================================================================
+
+# Añadir rutas personalizadas al PATH si es necesario
+export PATH="$HOME/bin:$PATH"
+
+# ======================================================================
+# FIN DEL ARCHIVO
+# ======================================================================
