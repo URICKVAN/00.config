@@ -4,9 +4,6 @@
 !00.ssh/add_ssh_key.sh
 
 # ==== 01.zsh ====
-01.zsh/*
-!01.zsh/aliases.zsh
-!01.zsh/zshrc
 
 # ==== 02.git ====
 
