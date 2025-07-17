@@ -1,5 +1,17 @@
+# ==== GUÍA RÁPIDA DE CONVENTIONAL COMMITS ====
+# | tipo     | uso recomendado                                 |
+# |----------|-------------------------------------------------|
+# | feat     | nueva funcionalidad                             |
+# | fix      | corrección de error                             |
+# | docs     | cambios en documentación                        |
+# | style    | cambios de formato (sin afectar lógica)         |
+# | refactor | cambios internos sin añadir/corregir funciones |
+# | perf     | mejoras de rendimiento                          |
+# | test     | agregar o modificar pruebas                     |
+# | chore    | mantenimiento o tareas sin afectar funcionalidad|
+#
 # ======== TÍTULO DEL COMMIT (máx 50 caracteres) ========
-# Escribe aquí un resumen breve y claro
+# Formato: <tipo>(<área opcional>): <descripción breve>
 #
 # ======== DESCRIPCIÓN DETALLADA (opcional) ========
 # Explica los cambios, por qué se hicieron y cualquier contexto extra.
