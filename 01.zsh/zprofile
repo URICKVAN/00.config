@@ -1,0 +1,16 @@
+# ======================================================================
+# ~/.zprofile
+# Se carga en shells de login (como Warp en macOS)
+# ======================================================================
+
+# ---- Configuración de PATH para Python 3.13 ----
+PATH="/Library/Frameworks/Python.framework/Versions/3.13/bin:${PATH}"
+export PATH
+
+# ---- Inicializar Homebrew ----
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# ---- Forzar carga de ~/.zshrc ----
+if [ -f "$HOME/.zshrc" ]; then
+  source "$HOME/.zshrc"
+fi

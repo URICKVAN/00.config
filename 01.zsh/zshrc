@@ -1,69 +1,47 @@
 # ======================================================================
-# ARCHIVO CENTRALIZADO DE CONFIGURACIÓN ZSH
-# UBICACIÓN: /Users/iurickvan/Library/CloudStorage/OneDrive-Personal/00.config/zshrc
-#
-# Este archivo define mi configuración personalizada de Zsh usando Oh My Zsh.
-# Está pensado para ser usado mediante un enlace simbólico desde ~/.zshrc
-# en cada equipo donde instale oh-my-zsh.
-#
+# ~/.zshrc (centralizado)
 # ======================================================================
 
-# Ruta donde está instalado oh-my-zsh (por defecto):
-export ZSH="$HOME/.oh-my-zsh"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"   # Prioriza Homebrew
+export ZSH="$HOME/.oh-my-zsh"                              # Ruta Oh My Zsh
+ZSH_THEME="powerlevel10k/powerlevel10k"                    # Tema Powerlevel10k
 
-# Tema a utilizar (puedes cambiarlo por ejemplo a "agnoster" o "powerlevel10k/powerlevel10k")
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="jonathan"
-
-# Lista de plugins de oh-my-zsh a cargar
-plugins=(
-  git
-  z
-  colored-man-pages
-  sudo
-  extract
+plugins=(                                                  # Plugins útiles
+  git            # Funciones y alias de Git
+  z              # Cambio rápido entre directorios
+  colored-man-pages  # Páginas man con colores
+  sudo           # ESC para anteponer sudo
+  extract        # Descomprimir archivos fácil
 )
 
-# Cargar oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh                                   # Carga Oh My Zsh
 
-# ======================================================================
-# OPCIONES ÚTILES DE ZSH
-# ======================================================================
+# ---- Opciones de Zsh ----
+ENABLE_CORRECTION="true"   # Corrección automática
+REPORTTIME=10              # Tiempo si comando tarda >10s
+setopt AUTO_CD             # cd implícito
+setopt SHARE_HISTORY       # Compartir historial entre sesiones
+HIST_STAMPS="yyyy-mm-dd"   # Timestamps en historial
 
-# Habilitar corrección automática de comandos
-ENABLE_CORRECTION="true"
+# ---- Historial avanzado ----
+HISTFILE=$HOME/.zsh_history # Archivo de historial
+HISTSIZE=10000              # Máx comandos en memoria
+SAVEHIST=10000              # Máx comandos en archivo
+setopt INC_APPEND_HISTORY   # Guarda inmediatamente
+setopt SHARE_HISTORY        # Comparte entre sesiones
+setopt HIST_IGNORE_ALL_DUPS # Sin duplicados
+setopt HIST_IGNORE_SPACE    # Ignora cmds con espacio inicial
+setopt HIST_VERIFY          # Permite editar antes de ejecutar
+setopt HIST_REDUCE_BLANKS   # Limpia espacios extra
 
-# Mostrar tiempo de ejecución si un comando tarda más de 10 segundos
-REPORTTIME=10
+# ---- Alias personalizados ----
+[ -f "/Users/iurickvan/Documents/00.config/01.zsh/aliases.zsh" ] && source "/Users/iurickvan/Documents/00.config/01.zsh/aliases.zsh"
 
-# Habilitar autocompletado de directorios con TAB
-setopt AUTO_CD
+# ---- Rutas adicionales ----
+export PATH="$HOME/bin:$PATH"   # Añade ~/bin al PATH
 
-# Compartir el historial entre todas las sesiones
-setopt SHARE_HISTORY
-
-# Guardar el historial con timestamps
-HIST_STAMPS="yyyy-mm-dd"
-
-# ======================================================================
-# ALIAS Y CONFIGURACIONES PERSONALIZADAS
-# ======================================================================
-
-# Cargar alias centralizados si el archivo existe
-# Cargar alias centralizados si el archivo existe
-if [ -f "/Users/iurickvan/Documents/00.config/01.zsh/aliases.zsh" ]; then
-    source "/Users/iurickvan/Documents/00.config/01.zsh/aliases.zsh"
-fi
-# Ejemplo de alias local (puedes poner aquí también directamente):
-# alias gs='git status'
-
-# ======================================================================
-# EXPORTS Y OTRAS VARIABLES
-# ======================================================================
-
-# Añadir rutas personalizadas al PATH si es necesario
-export PATH="$HOME/bin:$PATH"
+# ---- Powerlevel10k ----
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh  # Carga configuración p10k
 
 # ======================================================================
 # FIN DEL ARCHIVO

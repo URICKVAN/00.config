@@ -1,0 +1,16 @@
+# ======================================================================
+# ~/.zshenv
+# Se carga siempre, incluso para scripts no interactivos
+# Aquí solo definimos cosas mínimas que deben existir siempre
+# ======================================================================
+
+# ---- Directorio de sesiones para Zsh ----
+export ZSH_CACHE_DIR="$HOME/.zsh_sessions"
+mkdir -p "$ZSH_CACHE_DIR"
+
+# ---- Cargar ~/.zshrc solo si es shell interactiva ----
+if [[ -t 1 ]]; then
+  if [ -f "$HOME/.zshrc" ]; then
+    source "$HOME/.zshrc"
+  fi
+fi
