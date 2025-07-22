@@ -10,3 +10,4 @@ alias la='ls -la'      # Lista todo (incl. ocultos) en largo sin colores
 alias addkey='sh /Users/iurickvan/Documents/00.config/00.ssh/add_ssh_key.sh'  # Ejecuta script para agregar llave SSH
 
 alias cdu='cd /Users/iurickvan/'  # Salta directo al directorio home de iurickvan
+alias startssh='sh /Users/iurickvan/Documents/00.config/00.ssh/start-ssh-agent.sh'  # inicializa las keys ssh
