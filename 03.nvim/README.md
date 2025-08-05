@@ -1,142 +1,98 @@
-# 🧠 Configuración personalizada de Neovim con NvChad
+# ⚙️ Configuración personalizada de Neovim con NvChad
 
-Este proyecto contiene una configuración de Neovim basada en **NvChad v2.5**, personalizada para desarrollo web, scripting y productividad con soporte para múltiples lenguajes.
-
-> 📅 Última actualización: `2025-08-05`
+Repositorio de configuración para [NvChad](https://github.com/NvChad/NvChad), mantenido y versionado por [URICKVAN](https://github.com/URICKVAN) dentro del repositorio:  
+🔗 https://github.com/URICKVAN/00.config.git
 
 ---
 
-## 📦 Características principales
+## 📁 Estructura y ubicación
 
-- 🎨 **Tema:** `onedark` con transparencia activada  
-- 🧠 **LSPs** integrados: TypeScript, HTML, CSS, Python, Lua  
-- 🧹 **Formateo automático:** [conform.nvim]  
-- 🛠️ **Gestión de herramientas:** [mason.nvim]  
-- 🏷️ **Autoetiquetado:** HTML/JSX con `nvim-ts-autotag`  
-- 🔄 **Surround inteligente:** con `nvim-surround`  
-- ⚡ **Expansión HTML/CSS:** con Emmet  
-- 🧱 **Terminal flotante integrada:** con `toggleterm`  
-- 📂 **Árbol de archivos** (`nvim-tree`) que se abre automáticamente  
-- ⌨️ **Atajos optimizados:** `<leader>`, `jk`, `Tab`, `Alt+h/j/k/l`
+La configuración está ubicada en:
+
+```
+~/Documents/00.config/03.nvim
+```
+
+Y se vincula con el directorio estándar de configuración de Neovim usando un **enlace simbólico**:
+
+```bash
+rm -rf ~/.config/nvim  # Elimina si ya existía
+ln -s ~/Documents/00.config/03.nvim ~/.config/nvim
+```
+
+Esto permite mantener la configuración centralizada, versionada y replicable en otros entornos.
 
 ---
 
 ## 🚀 Instalación rápida
 
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/URICKVAN/00.config.git ~/Documents/00.config
+   ```
+
+2. Crea el enlace simbólico:
+   ```bash
+   ln -s ~/Documents/00.config/03.nvim ~/.config/nvim
+   ```
+
+3. Inicia Neovim (la primera vez instalará los plugins):
+   ```bash
+   nvim
+   ```
+
+---
+
+## 📦 Plugins destacados
+
+- `nvim-lspconfig` – soporte LSP para múltiples lenguajes
+- `mason.nvim` + `mason-lspconfig` – gestión de servidores LSP y herramientas
+- `conform.nvim` – formateo automático al guardar y al salir de modo Insert
+- `nvim-ts-autotag` – cierre automático de etiquetas
+- `toggleterm.nvim` – terminal flotante
+- `nvim-surround` – manipulación de pares de símbolos
+- `emmet-vim` – expansión rápida de etiquetas HTML
+
+---
+
+## 🧠 Atajos útiles
+
+| Comando               | Acción                                        |
+|-----------------------|-----------------------------------------------|
+| `<leader>tt`          | Abre terminal flotante (ToggleTerm)          |
+| `<Tab>` / `<S-Tab>`   | Navegar entre buffers                         |
+| `:NvimTreeToggle`     | Abrir/cerrar el explorador de archivos        |
+| `:Format`             | Ejecutar formateo manual con conform.nvim     |
+| `jk` en modo Insert   | Salir al modo Normal                          |
+| `;` en modo Normal    | Entra en modo comando (`:`)                   |
+
+---
+
+## 🧼 Formateo automático
+
+Está configurado para ejecutarse en los siguientes eventos:
+
+- Al **salir del modo Insert**
+- Al **guardar el archivo**
+
+### Archivos soportados:
+
+- `.js`, `.jsx`, `.ts`, `.tsx`, `.html`, `.css`, `.json`, `.py`, `.sh`, `.lua`
+
+---
+
+## 🔧 Dependencias sugeridas
+
+Instala Prettier, Black, shfmt, stylua, etc., por ejemplo:
+
 ```bash
-git clone https://github.com/tu-usuario/tu-repo ~/.config/nvim
-bash ~/.config/nvim/bootstrap.sh
-nvim
+npm install -g prettier
+pip install black
+brew install shfmt stylua
 ```
 
 ---
 
-## 🛠️ Requisitos
+## 📝 Licencia
 
-Instala los siguientes binarios globales:
-
-```bash
-npm install -g prettier        # HTML, JS, TS, CSS, JSON
-pip install black              # Python
-cargo install stylua           # Lua
-sudo apt install shfmt         # Shell (o usa brew en macOS)
-```
-
----
-
-## 📁 Estructura de archivos destacada
-
-```bash
-.config/nvim/
-├── init.lua                      # Archivo de arranque
-├── .stylua.toml                  # Configuración del formateador Lua
-├── lua/
-│   ├── chadrc.lua                # Configuración de apariencia y opciones generales
-│   ├── options.lua               # Opciones de Neovim
-│   ├── mappings.lua              # Atajos personalizados
-│   ├── autocmds.lua              # Autocomandos
-│   ├── configs/
-│   │   ├── conform.lua           # Configuración de conform.nvim (formateo)
-│   │   ├── lazy.lua              # Configuración de lazy.nvim
-│   │   └── lspconfig.lua         # Configuración de LSPs
-│   └── plugins/
-│       └── init.lua              # Declaración de plugins externos
-├── lazy-lock.json                # Archivo autogenerado de bloqueo de plugins
-```
-
----
-
-## 🧩 Atajos útiles
-
-| Acción                      | Comando                  |
-|----------------------------|--------------------------|
-| Abrir terminal flotante    | `<leader>tt`             |
-| Guardar archivo            | `<Ctrl+s>` (si definido) |
-| Salir del modo insert      | `jk`                     |
-| Mover entre buffers        | `<Tab>` y `<S-Tab>`      |
-| Mover entre ventanas       | `<Alt+h/j/k/l>`          |
-| Abrir árbol de archivos    | `nvim .` (abre NvimTree) |
-
----
-
-## 🔧 Formateo automático
-
-El formateo se activa en:
-
-- `BufWritePre` (al guardar)
-- `InsertLeave` (al salir del modo Insert)
-
-Aplica para archivos:
-
-```
-.js, .jsx, .ts, .tsx, .html, .css, .json, .py, .sh, .lua
-```
-
-Manual:
-
-```vim
-:ConformFormat
-```
-
----
-
-## 🧪 Comandos útiles
-
-```vim
-:Mason             " Abre la interfaz de mason
-:MasonInstall tsserver html cssls lua_ls pyright
-:ToggleTerm        " Abre la terminal flotante
-:NvimTreeToggle    " Abre o cierra el árbol de archivos
-:ConformInfo       " Información sobre formateadores disponibles
-```
-
----
-
-## 📐 Opcional: Uso de `.editorconfig`
-
-Puedes agregar un archivo `.editorconfig` para mantener consistencia entre editores.
-
-### 📄 Ejemplo de `.editorconfig`
-
-```ini
-root = true
-
-[*]
-charset = utf-8
-end_of_line = lf
-insert_final_newline = true
-trim_trailing_whitespace = true
-indent_style = space
-indent_size = 2
-
-[*.py]
-indent_size = 4
-
-[*.md]
-trim_trailing_whitespace = false
-
-[Makefile]
-indent_style = tab
-```
-
-👉 [Descargar .editorconfig](sandbox:/mnt/data/.editorconfig)
+MIT © URICKVAN
