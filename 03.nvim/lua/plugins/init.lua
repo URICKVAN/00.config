@@ -52,14 +52,74 @@ return {
   {
     "akinsho/toggleterm.nvim",
     version = "*",
+    keys = {
+      { "<leader>tt", "<cmd>ToggleTerm direction=float<CR>", desc = "Terminal flotante" },
+      { "<leader>tv", "<cmd>ToggleTerm direction=vertical size=80<CR>", desc = "Terminal vertical" },
+      { "<leader>th", "<cmd>ToggleTerm direction=horizontal size=15<CR>", desc = "Terminal horizontal" },
+
+      -- Live Server persistente (toggle sin matar el proceso)
+      {
+        "<leader>ls",
+        function()
+          if not _LIVE_SERVER then
+            local Terminal = require("toggleterm.terminal").Terminal
+            _LIVE_SERVER = Terminal:new({
+              cmd = "live-server --port=5500 --open=.", -- quita --open si no quieres abrir navegador
+              dir = "git_dir",          -- usa la raíz del repo (o "cwd" para el dir actual)
+              direction = "float",      -- cámbialo a "horizontal" si prefieres
+              hidden = true,
+              close_on_exit = false,    -- ⚡ no mata el proceso al cerrar la ventana
+              start_in_insert = true,
+            })
+          end
+          _LIVE_SERVER:toggle()
+        end,
+        desc = "Live Server (toggle persistente)",
+      },
+
+      -- (Opcional) Reabrir el sitio en el navegador (macOS usa `open`)
+      {
+        "<leader>lo",
+        function()
+          vim.fn.jobstart({ "open", "http://127.0.0.1:5500" }, { detach = true })
+        end,
+        desc = "Abrir sitio en el navegador",
+      },
+    },
+    cmd = { "ToggleTerm", "TermExec", "ToggleTermToggleAll" },
     config = function()
       require("toggleterm").setup({
+        -- Tamaño agradable según dirección
+        size = function(term)
+          if term.direction == "horizontal" then
+            return 14
+          elseif term.direction == "vertical" then
+            return math.floor(vim.o.columns * 0.38)
+          end
+          return 14
+        end,
         direction = "float",
-        open_mapping = [[<leader>tt]],
+        shade_terminals = true,
+        shading_factor = 2,
+        float_opts = { border = "curved" },
+        start_in_insert = true,
+        persist_size = true,
+      })
+
+      -- Limpieza visual para terminales
+      vim.api.nvim_create_autocmd("TermOpen", {
+        pattern = "term://*",
+        callback = function()
+          vim.opt_local.number = false
+          vim.opt_local.relativenumber = false
+          vim.opt_local.signcolumn = "no"
+          vim.opt_local.cursorline = false
+          vim.opt_local.wrap = false
+          vim.opt_local.spell = false
+        end,
       })
     end,
   },
-
   -- 🏷️ Autocierre/renombrado de etiquetas HTML/JSX/TSX
   {
     "windwp/nvim-ts-autotag",
