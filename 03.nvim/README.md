@@ -32,10 +32,21 @@ The goal is to build software efficiently, not just customize an editor.
 
 ## 🏗️ Project Structure
 
-03.nvim/ ├── init.lua ├── lua/ │ ├── core/ │ │ ├── options.lua │ │ ├──
-keymaps.lua │ │ └── autocmds.lua │ ├── plugins/ │ │ ├── lsp.lua │ │ ├──
-treesitter.lua │ │ ├── telescope.lua │ │ ├── completion.lua │ │ └── ...
-│ └── utils/ └── README.md
+    03.nvim/
+    ├── init.lua
+    ├── lua/
+    │   ├── core/
+    │   │   ├── options.lua
+    │   │   ├── keymaps.lua
+    │   │   └── autocmds.lua
+    │   ├── plugins/
+    │   │   ├── lsp.lua
+    │   │   ├── treesitter.lua
+    │   │   ├── telescope.lua
+    │   │   ├── completion.lua
+    │   │   └── ...
+    │   └── utils/
+    └── README.md
 
 ### Structure Overview
 
@@ -129,19 +140,6 @@ manager).
 
 ------------------------------------------------------------------------
 
-## ⌨️ Keybindings
-
-  Action             Shortcut
-  ------------------ ---------------------
-  Find files         `<leader>`{=html}ff
-  Live grep          `<leader>`{=html}fg
-  Go to definition   gd
-  Show references    gr
-  Show diagnostics   `<leader>`{=html}d
-  Format file        `<leader>`{=html}f
-
-------------------------------------------------------------------------
-
 ## 🧪 Real-World Usage
 
 This setup is used for:
@@ -168,7 +166,4 @@ This setup is used for:
 
 ## 👨‍💻 Author
 
-Jorge Emmanuel Godínez Rojas\
-IT Director \| Backend & DevOps Engineer
-
-GitHub: https://github.com/URICKVAN
+Jorge Emmanuel Godínez Rojas
