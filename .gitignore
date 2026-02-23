@@ -1,5 +1,6 @@
 # ==== 00.ssh ====
 # Permitir
+!00.ssh/README.md
 !00.ssh/config
 !00.ssh/add_ssh_key.sh
 # Ignorar
