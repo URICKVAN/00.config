@@ -1,98 +1,174 @@
-# ⚙️ Configuración personalizada de Neovim con NvChad
+# 🧠 Neovim Configuration -- URICKVAN
 
-Repositorio de configuración para [NvChad](https://github.com/NvChad/NvChad), mantenido y versionado por [URICKVAN](https://github.com/URICKVAN) dentro del repositorio:  
-🔗 https://github.com/URICKVAN/00.config.git
+Personal **Neovim configuration** focused on backend development, DevOps
+workflows, and real-world production environments.
 
----
+This setup is optimized for:
 
-## 📁 Estructura y ubicación
+-   Python / Django
+-   SQL
+-   Bash scripting
+-   Docker
+-   Git workflows
+-   Linux infrastructure
+-   Fullstack backend projects
 
-La configuración está ubicada en:
+------------------------------------------------------------------------
 
-```
-~/Documents/00.config/03.nvim
-```
+## 🚀 Philosophy
 
-Y se vincula con el directorio estándar de configuración de Neovim usando un **enlace simbólico**:
+This configuration follows these principles:
 
-```bash
-rm -rf ~/.config/nvim  # Elimina si ya existía
-ln -s ~/Documents/00.config/03.nvim ~/.config/nvim
-```
+-   ⚡ Fast startup
+-   🧩 Modular architecture
+-   🔎 Strong LSP integration
+-   🐍 Python-first workflow
+-   🐳 DevOps-ready
+-   🎯 Productivity over aesthetics
 
-Esto permite mantener la configuración centralizada, versionada y replicable en otros entornos.
+The goal is to build software efficiently, not just customize an editor.
 
----
+------------------------------------------------------------------------
 
-## 🚀 Instalación rápida
+## 🏗️ Project Structure
 
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/URICKVAN/00.config.git ~/Documents/00.config
-   ```
+03.nvim/ ├── init.lua ├── lua/ │ ├── core/ │ │ ├── options.lua │ │ ├──
+keymaps.lua │ │ └── autocmds.lua │ ├── plugins/ │ │ ├── lsp.lua │ │ ├──
+treesitter.lua │ │ ├── telescope.lua │ │ ├── completion.lua │ │ └── ...
+│ └── utils/ └── README.md
 
-2. Crea el enlace simbólico:
-   ```bash
-   ln -s ~/Documents/00.config/03.nvim ~/.config/nvim
-   ```
+### Structure Overview
 
-3. Inicia Neovim (la primera vez instalará los plugins):
-   ```bash
-   nvim
-   ```
+-   `core/` → Base configuration (options, mappings, autocmds)
+-   `plugins/` → Individual plugin configurations
+-   `utils/` → Reusable helper functions
 
----
+------------------------------------------------------------------------
 
-## 📦 Plugins destacados
+## 🧩 Core Plugins
 
-- `nvim-lspconfig` – soporte LSP para múltiples lenguajes
-- `mason.nvim` + `mason-lspconfig` – gestión de servidores LSP y herramientas
-- `conform.nvim` – formateo automático al guardar y al salir de modo Insert
-- `nvim-ts-autotag` – cierre automático de etiquetas
-- `toggleterm.nvim` – terminal flotante
-- `nvim-surround` – manipulación de pares de símbolos
-- `emmet-vim` – expansión rápida de etiquetas HTML
+### LSP & Autocompletion
 
----
+-   nvim-lspconfig
+-   mason.nvim
+-   nvim-cmp
+-   LuaSnip
 
-## 🧠 Atajos útiles
+### Search & Navigation
 
-| Comando               | Acción                                        |
-|-----------------------|-----------------------------------------------|
-| `<leader>tt`          | Abre terminal flotante (ToggleTerm)          |
-| `<Tab>` / `<S-Tab>`   | Navegar entre buffers                         |
-| `:NvimTreeToggle`     | Abrir/cerrar el explorador de archivos        |
-| `:Format`             | Ejecutar formateo manual con conform.nvim     |
-| `jk` en modo Insert   | Salir al modo Normal                          |
-| `;` en modo Normal    | Entra en modo comando (`:`)                   |
+-   telescope.nvim
+-   plenary.nvim
 
----
+### Syntax & Parsing
 
-## 🧼 Formateo automático
+-   nvim-treesitter
 
-Está configurado para ejecutarse en los siguientes eventos:
+### Git Integration
 
-- Al **salir del modo Insert**
-- Al **guardar el archivo**
+-   gitsigns.nvim
 
-### Archivos soportados:
+### UI & Developer Experience
 
-- `.js`, `.jsx`, `.ts`, `.tsx`, `.html`, `.css`, `.json`, `.py`, `.sh`, `.lua`
+-   Minimal statusline
+-   Clean theme
+-   Non-intrusive diagnostics
 
----
+------------------------------------------------------------------------
 
-## 🔧 Dependencias sugeridas
+## 🐍 Python / Django Workflow
 
-Instala Prettier, Black, shfmt, stylua, etc., por ejemplo:
+Optimized for:
 
-```bash
-npm install -g prettier
-pip install black
-brew install shfmt stylua
-```
+-   Python LSP support
+-   Automatic formatting
+-   Real-time diagnostics
+-   Snippets for faster development
+-   Django-based backend systems
+-   ETL pipelines
+-   PostgreSQL integration
 
----
+Designed to work seamlessly with:
 
-## 📝 Licencia
+-   Dockerized environments
+-   Cron jobs
+-   Batch processing scripts
+-   Production deployment workflows
 
-MIT © URICKVAN
+------------------------------------------------------------------------
+
+## 🐳 DevOps Workflow
+
+This configuration supports:
+
+-   Dockerfiles
+-   docker-compose.yml
+-   YAML for CI/CD
+-   Bash scripting
+-   SSH workflows
+-   Linux server configuration
+-   Infrastructure management
+
+------------------------------------------------------------------------
+
+## ⚙️ Installation
+
+### 1️⃣ Clone the repository
+
+git clone https://github.com/URICKVAN/00.config.git
+
+### 2️⃣ Create symbolic link
+
+ln -s \~/path/to/00.config/03.nvim \~/.config/nvim
+
+### 3️⃣ Launch Neovim
+
+nvim
+
+Plugins will install automatically (depending on the configured plugin
+manager).
+
+------------------------------------------------------------------------
+
+## ⌨️ Keybindings
+
+  Action             Shortcut
+  ------------------ ---------------------
+  Find files         `<leader>`{=html}ff
+  Live grep          `<leader>`{=html}fg
+  Go to definition   gd
+  Show references    gr
+  Show diagnostics   `<leader>`{=html}d
+  Format file        `<leader>`{=html}f
+
+------------------------------------------------------------------------
+
+## 🧪 Real-World Usage
+
+This setup is used for:
+
+-   Backend system development (Django + PostgreSQL)
+-   Python ETL pipelines
+-   Bash automation scripts
+-   Linux server maintenance
+-   LIS integrations
+-   Git version control workflows
+-   Infrastructure configuration (Proxmox / NAS / Docker)
+
+------------------------------------------------------------------------
+
+## 📌 Requirements
+
+-   Neovim ≥ 0.9
+-   Git
+-   Node.js (for certain LSP servers)
+-   Python 3
+-   Nerd Font installed
+
+------------------------------------------------------------------------
+
+## 👨‍💻 Author
+
+Jorge Emmanuel Godínez Rojas\
+IT Director \| Backend & DevOps Engineer
+
+GitHub: https://github.com/URICKVAN
