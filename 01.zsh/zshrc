@@ -43,6 +43,9 @@ export PATH="$HOME/bin:$PATH"   # Añade ~/bin al PATH
 # ---- Powerlevel10k ----
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh  # Carga configuración p10k
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 # ======================================================================
 # FIN DEL ARCHIVO
 # ======================================================================
