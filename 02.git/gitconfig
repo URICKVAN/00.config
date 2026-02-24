@@ -14,3 +14,23 @@
     lg = log --oneline --decorate --graph --all
 [commit]
 	template = /Users/iurickvan/Documents/00.config/02.git/templates/gitmessage.txt
+
+[pull]
+    rebase = true
+
+[rebase]
+    autoStash = true
+
+[fetch]
+    prune = true
+    pruneTags = true
+
+[init]
+    defaultBranch = main
+
+[push]
+    autoSetupRemote = true
+
+# Helpful for resolving repeated conflicts faster
+[rerere]
+    enabled = true

@@ -1,25 +1,57 @@
-# ==== GUÍA RÁPIDA DE CONVENTIONAL COMMITS ====
-# | tipo     | uso recomendado                                 |
-# |----------|-------------------------------------------------|
-# | feat     | nueva funcionalidad                             |
-# | fix      | corrección de error                             |
-# | docs     | cambios en documentación                        |
-# | style    | cambios de formato (sin afectar lógica)         |
-# | refactor | cambios internos sin añadir/corregir funciones |
-# | perf     | mejoras de rendimiento                          |
-# | test     | agregar o modificar pruebas                     |
-# | chore    | mantenimiento o tareas sin afectar funcionalidad|
+# =========================================================
+# CONVENTIONAL COMMITS QUICK GUIDE
+# =========================================================
 #
-# ======== TÍTULO DEL COMMIT (máx 50 caracteres) ========
-# Formato: <tipo>(<área opcional>): <descripción breve>
+# Format:
+# <type>(<optional-scope>): <short summary>
 #
-# ======== DESCRIPCIÓN DETALLADA (opcional) ========
-# Explica los cambios, por qué se hicieron y cualquier contexto extra.
+# Summary rules:
+# - Use imperative mood ("add", not "added")
+# - Max 50 characters
+# - Do not end with a period
 #
-# Ejemplo:
-# - Lista de cambios relevantes
-# - Contexto adicional si aplica
+# ---------------------------------------------------------
+# TYPE REFERENCE
 #
-# ======== REFERENCIAS (opcional) ========
-# Usa esta sección si quieres anotar algo extra
-
+# feat     → new feature
+# fix      → bug fix
+# docs     → documentation changes
+# style    → formatting only (no logic change)
+# refactor → internal restructuring (no behavior change)
+# perf     → performance improvements
+# test     → adding or modifying tests
+# chore    → maintenance tasks (no production impact)
+# build    → build system or dependencies
+# ci       → CI/CD related changes
+#
+# ---------------------------------------------------------
+# BODY (optional)
+#
+# Explain:
+# - What changed
+# - Why it changed
+# - Context if necessary
+#
+# Wrap lines at 72 characters.
+#
+# ---------------------------------------------------------
+# BREAKING CHANGES (if applicable)
+#
+# Use:
+# BREAKING CHANGE: describe the impact
+#
+# Example:
+# feat(auth): add JWT authentication support
+#
+# Adds token-based authentication using PyJWT.
+# Improves API security for external integrations.
+#
+# BREAKING CHANGE: login endpoint response format updated
+#
+# ---------------------------------------------------------
+# REFERENCES (optional)
+#
+# Closes #123
+# Related to #456
+#
+# =========================================================
