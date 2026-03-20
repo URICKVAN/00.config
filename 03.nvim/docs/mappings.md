@@ -226,3 +226,102 @@ Activo automáticamente en buffers `*.md`. No requiere keymaps — el render es 
 Sessions are saved/restored automatically on exit/enter.
 NvimTree is closed before save and reopened after restore.
 Suppressed directories: `~/`, `~/Downloads`, `~/Desktop`, `/`.
+
+---
+
+## Quick Reference by Key Prefix
+
+### `<leader>` (Space)
+
+| Key | Action | Category |
+|-----|--------|----------|
+| `<leader>b` | New buffer | Buffers |
+| `<leader>x` | Close buffer | Buffers |
+| `<leader>z` | Toggle line numbers | General |
+| `<leader>rn` | Toggle relative numbers | General |
+| `<leader>ch` | NvChad cheatsheet | General |
+| `<leader>n` | Toggle NvimTree | File Explorer |
+| `<leader>e` | Focus NvimTree | File Explorer |
+| `<leader>ff` | Find files | Telescope |
+| `<leader>fg` | Live grep | Telescope |
+| `<leader>fw` | Live grep (NvChad) | Telescope |
+| `<leader>fb` | Find buffers | Telescope |
+| `<leader>fh` | Help pages | Telescope |
+| `<leader>fo` | Recent files | Telescope |
+| `<leader>fz` | Fuzzy find in buffer | Telescope |
+| `<leader>fs` | Find/restore sessions | Sessions |
+| `<leader>cm` | Git commits | Telescope |
+| `<leader>gt` | Git status | Telescope |
+| `<leader>sh` | Signature help | LSP |
+| `<leader>D` | Type definition | LSP |
+| `<leader>ra` | Rename symbol | LSP |
+| `<leader>ca` | Code action | LSP |
+| `<leader>fm` | Format file | LSP |
+| `<leader>ds` | Diagnostics float | LSP |
+| `<leader>wa` | Add workspace folder | LSP |
+| `<leader>wr` | Remove workspace folder | LSP |
+| `<leader>wl` | List workspace folders | LSP |
+| `<leader>rh` | Reset hunk | Git |
+| `<leader>ph` | Preview hunk | Git |
+| `<leader>gb` | Git blame line | Git |
+| `<leader>td` | Toggle deleted lines | Git |
+| `<leader>tt` | Float terminal | Terminal |
+| `<leader>tv` | Vertical terminal | Terminal |
+| `<leader>th` | Horizontal terminal | Terminal |
+| `<leader>ls` | Toggle Live Server | Live Server |
+| `<leader>lo` | Open Live Server in browser | Live Server |
+
+---
+
+### `<C->` (Ctrl)
+
+| Key | Mode | Action | Category |
+|-----|------|--------|----------|
+| `<C-s>` | n/i/v | Save file | General |
+| `<C-c>` | n | Copy whole file | General |
+| `<C-h>` | n | Focus window left | Windows |
+| `<C-l>` | n | Focus window right | Windows |
+| `<C-j>` | n | Focus window down | Windows |
+| `<C-k>` | n | Focus window up | Windows |
+| `<C-n>` | n | Toggle NvimTree | File Explorer |
+| `<C-Space>` | i | Open completion menu | Completion |
+| `<C-Z>,` | i | Expand Emmet | Emmet |
+| `<C-v>` | NvimTree | Open in vertical split | NvimTree |
+| `<C-x>` | NvimTree | Open in horizontal split | NvimTree |
+| `<C-t>` | NvimTree | Open in new tab | NvimTree |
+
+---
+
+### `<A->` (Alt)
+
+| Key | Mode | Action | Category |
+|-----|------|--------|----------|
+| `<A-i>` | n | Float terminal (NvChad) | Terminal |
+| `<A-h>` | n | Horizontal terminal (NvChad) | Terminal |
+| `<A-v>` | n | Vertical terminal (NvChad) | Terminal |
+
+---
+
+### Sin prefijo / Otros
+
+| Key | Mode | Action | Category |
+|-----|------|--------|----------|
+| `;` | n | Enter command mode | General |
+| `jk` | i | Exit insert mode | General |
+| `<Esc>` | n | Clear search highlights | General |
+| `<Tab>` | n | Next buffer | Buffers |
+| `<S-Tab>` | n | Previous buffer | Buffers |
+| `<Tab>` | i | Next completion / snippet jump | Completion |
+| `<S-Tab>` | i | Prev completion / snippet jump | Completion |
+| `<CR>` | i | Confirm completion | Completion |
+| `gD` | n | Go to declaration | LSP |
+| `gd` | n | Go to definition | LSP |
+| `gi` | n | Go to implementation | LSP |
+| `gr` | n | List references | LSP |
+| `K` | n | Hover documentation | LSP |
+| `]c` | n | Next git hunk | Git |
+| `[c` | n | Previous git hunk | Git |
+| `ys{motion}{char}` | n | Add surround | Surround |
+| `ds{char}` | n | Delete surround | Surround |
+| `cs{old}{new}` | n | Change surround | Surround |
+| `S{char}` | v | Surround selection | Surround |
