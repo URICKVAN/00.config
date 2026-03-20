@@ -6,7 +6,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path // \"\"' | grep -qE '(lua/mappings\\.lua|lua/plugins/init\\.lua)$' && echo '{\"systemMessage\":\"⚠️  Mappings changed — update docs/mappings.md\"}' || true"
+            "command": "jq -r '.tool_input.file_path // \"\"' | grep -qE '(lua/mappings\\.lua|lua/plugins/init\\.lua)$' && echo '{\"systemMessage\":\"Mappings changed -- update docs/mappings.md\"}' || true"
+          },
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // \"\"' | grep -qE '(lua/plugins/init\\.lua|lua/configs/lspconfig\\.lua|lua/configs/conform\\.lua)$' && echo '{\"systemMessage\":\"Plugin/LSP/formatter changed -- update README.md if needed\"}' || true"
           }
         ]
       }

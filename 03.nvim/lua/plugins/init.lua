@@ -230,6 +230,33 @@ return {
     lazy = true,
   },
 
+  -- 📄 Render Markdown en el buffer (tablas, headings, code blocks, etc.)
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    config = function()
+      require("render-markdown").setup({
+        heading = {
+          enabled = true,
+          sign = false,
+        },
+        code = {
+          enabled = true,
+          sign = false,
+          style = "full",   -- "full" | "normal" | "language" | "none"
+        },
+        bullet = { enabled = true },
+        checkbox = { enabled = true },
+        table = { enabled = true },
+        link = { enabled = true },
+      })
+    end,
+  },
+
   -- 💾 Gestión de sesiones automática (con telescope integrado)
   {
     "rmagatti/auto-session",

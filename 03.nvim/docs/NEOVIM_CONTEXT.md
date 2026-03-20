@@ -147,6 +147,7 @@ Extends `nvchad.mappings` with:
 | `LuaSnip` v2 | VSCode snippets via friendly-snippets; jsregexp build step |
 | `nvim-cmp` | Completion: LSP + LuaSnip + buffer + path sources |
 | `nvim-web-devicons` | File type icons |
+| `render-markdown.nvim` | In-buffer Markdown rendering (headings, tables, code blocks, checkboxes, links); active on `ft=markdown` |
 | `auto-session` | Automatic session save/restore; NvimTree closed before save, reopened after restore; Telescope picker via `<leader>fs` |
 
 ### LSP Servers (`configs/lspconfig.lua`)

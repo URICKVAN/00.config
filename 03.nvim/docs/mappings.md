@@ -202,6 +202,20 @@ While the NvimTree panel is focused:
 
 ---
 
+## Markdown — render-markdown.nvim
+
+Activo automáticamente en buffers `*.md`. No requiere keymaps — el render es en tiempo real.
+
+| Comando | Acción |
+|---------|--------|
+| `:RenderMarkdown enable` | Activar render en el buffer actual |
+| `:RenderMarkdown disable` | Desactivar render en el buffer actual |
+| `:RenderMarkdown toggle` | Alternar activado/desactivado |
+| `:RenderMarkdown expand` | Expandir todos los elementos |
+| `:RenderMarkdown contract` | Contraer todos los elementos |
+
+---
+
 ## Sessions — auto-session
 
 | Mode | Key | Action |
