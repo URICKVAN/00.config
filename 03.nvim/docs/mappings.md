@@ -17,7 +17,7 @@
 | `n/i/v` | `<C-s>` | Save file |
 | `n` | `<Esc>` | Clear search highlights |
 | `n` | `<C-c>` | Copy whole file to clipboard |
-| `n` | `<leader>n` | Toggle line numbers |
+| `n` | `<leader>z` | Toggle line numbers |
 | `n` | `<leader>rn` | Toggle relative line numbers |
 | `n` | `<leader>ch` | NvChad cheatsheet |
 
@@ -50,6 +50,7 @@
 | Mode | Key | Action |
 |------|-----|--------|
 | `n` | `<C-n>` | Toggle NvimTree |
+| `n` | `<leader>n` | Toggle NvimTree |
 | `n` | `<leader>e` | Focus NvimTree |
 
 ---

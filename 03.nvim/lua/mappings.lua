@@ -8,6 +8,12 @@ local map = vim.keymap.set
 
 -- ==== Mapeos personalizados ====
 
+-- Reasignación: <leader>n ahora togglea NvimTree (antes era <C-n>)
+--               <leader>z ahora togglea line numbers (antes era <leader>n)
+vim.keymap.del("n", "<leader>n")
+map("n", "<leader>n", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
+map("n", "<leader>z", "<cmd>set nu!<CR>", { desc = "Toggle line numbers" })
+
 -- Normal mode: usa ; para entrar a modo comando (en lugar de Shift+;)
 map("n", ";", ":", { desc = "CMD enter command mode" })
 
