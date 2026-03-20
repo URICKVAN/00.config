@@ -32,57 +32,60 @@ The goal is to build software efficiently, not just customize an editor.
 
 ## 🏗️ Project Structure
 
+Built on **NvChad v2.5** — extends it, does not replace it.
+
     03.nvim/
-    ├── init.lua
-    ├── lua/
-    │   ├── core/
-    │   │   ├── options.lua
-    │   │   ├── keymaps.lua
-    │   │   └── autocmds.lua
-    │   ├── plugins/
-    │   │   ├── lsp.lua
-    │   │   ├── treesitter.lua
-    │   │   ├── telescope.lua
-    │   │   ├── completion.lua
-    │   │   └── ...
-    │   └── utils/
-    └── README.md
+    ├── init.lua                  ← Bootstrap: Lazy.nvim + NvChad + custom plugins
+    ├── lazy-lock.json            ← Exact plugin commit pins
+    ├── README.md
+    ├── docs/
+    │   └── NEOVIM_CONTEXT.md    ← AI-assisted dev context doc
+    └── lua/
+        ├── chadrc.lua            ← NvChad theme/UI config (onedark, transparency)
+        ├── options.lua           ← Editor options (extends NvChad defaults)
+        ├── mappings.lua          ← Keymaps (extends NvChad defaults)
+        ├── autocmds.lua          ← Auto-commands
+        ├── configs/
+        │   ├── lazy.lua          ← Lazy.nvim settings
+        │   ├── lspconfig.lua     ← LSP server setup
+        │   └── conform.lua       ← Formatter configuration
+        └── plugins/
+            └── init.lua          ← All custom plugin declarations
 
-### Structure Overview
+### What NvChad provides (not re-declared here)
 
--   `core/` → Base configuration (options, mappings, autocmds)
--   `plugins/` → Individual plugin configurations
--   `utils/` → Reusable helper functions
+nvim-treesitter, telescope.nvim, nvim-tree.lua, gitsigns.nvim,
+nvim-autopairs, indent-blankline.nvim, which-key.nvim, default LSP base,
+default mappings/options/autocmds.
 
 ------------------------------------------------------------------------
 
-## 🧩 Core Plugins
+## 🧩 Custom Plugins
 
-### LSP & Autocompletion
+### LSP & Formatting
 
--   nvim-lspconfig
--   mason.nvim
--   nvim-cmp
--   LuaSnip
+-   nvim-lspconfig + mason.nvim + mason-lspconfig
+-   conform.nvim (prettier, black, stylua, shfmt)
+-   Servers: pyright, ts_ls, html, cssls, lua_ls
 
-### Search & Navigation
+### Autocompletion
 
--   telescope.nvim
--   plenary.nvim
+-   nvim-cmp (LSP + LuaSnip + buffer + path sources)
+-   LuaSnip v2 + friendly-snippets (VSCode snippets)
 
-### Syntax & Parsing
+### Web Development
 
--   nvim-treesitter
+-   nvim-ts-autotag (HTML/JSX/TSX tag auto-close)
+-   nvim-surround
+-   emmet-vim (`<C-Z>,` in html/css/jsx/tsx)
 
-### Git Integration
+### Terminal
 
--   gitsigns.nvim
+-   toggleterm.nvim (float/vertical/horizontal; Live Server integration)
 
-### UI & Developer Experience
+### Sessions
 
--   Minimal statusline
--   Clean theme
--   Non-intrusive diagnostics
+-   auto-session (auto save/restore; Telescope picker `<leader>fs`)
 
 ------------------------------------------------------------------------
 
@@ -156,11 +159,26 @@ This setup is used for:
 
 ## 📌 Requirements
 
--   Neovim ≥ 0.9
+-   Neovim ≥ 0.9 (recommend ≥ 0.10)
 -   Git
--   Node.js (for certain LSP servers)
--   Python 3
--   Nerd Font installed
+-   Node.js ≥ 18 LTS + npm (ts_ls, html-lsp, cssls; live-server)
+-   Python 3 ≥ 3.8 (pyright)
+-   make / gcc (LuaSnip jsregexp build)
+-   Nerd Font
+-   ripgrep (`rg`) and fd (Telescope)
+
+### Mason-managed (auto-installed)
+
+LSP: `typescript-language-server`, `html-lsp`, `css-lsp`, `pyright`, `lua-language-server`
+
+Formatters (install manually via `:MasonInstall`):
+`prettier`, `black`, `stylua`, `shfmt`
+
+### External
+
+```
+npm install -g live-server
+```
 
 ------------------------------------------------------------------------
 

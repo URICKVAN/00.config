@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E '\\\\.\\(sh|bash|zsh|vim|json|yaml|yml\\)$')"
+    ]
+  }
+}

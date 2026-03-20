@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // \"\"' | grep -qE '(lua/mappings\\.lua|lua/plugins/init\\.lua)$' && echo '{\"systemMessage\":\"⚠️  Mappings changed — update docs/mappings.md\"}' || true"
+          }
+        ]
+      }
+    ]
+  }
+}

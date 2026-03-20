@@ -229,4 +229,23 @@ return {
     "nvim-tree/nvim-web-devicons",
     lazy = true,
   },
+
+  -- 💾 Gestión de sesiones automática (con telescope integrado)
+  {
+    "rmagatti/auto-session",
+    lazy = false,
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("auto-session").setup({
+        log_level = "error",
+        suppressed_dirs = { "~/", "~/Downloads", "~/Desktop", "/" },
+        pre_save_cmds = { "NvimTreeClose" },
+        post_restore_cmds = { function() vim.schedule(function() vim.cmd("NvimTreeOpen") end) end },
+        session_lens = {
+          load_on_setup = true,
+          previewer = false,
+        },
+      })
+    end,
+  },
 }
