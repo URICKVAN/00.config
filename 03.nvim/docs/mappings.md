@@ -325,3 +325,156 @@ Suppressed directories: `~/`, `~/Downloads`, `~/Desktop`, `/`.
 | `ds{char}` | n | Delete surround | Surround |
 | `cs{old}{new}` | n | Change surround | Surround |
 | `S{char}` | v | Surround selection | Surround |
+
+---
+
+## Corne Keyboard Layout
+
+> Mano izquierda: `a  o  e  u  i  p  y  q  j  k  x`
+> Mano derecha:   `d  h  t  n  s  f  g  c  r  l  b  m  w  v  z`
+> `—` = libre (sin asignar) · Las teclas con `→ submenu` esperan una segunda tecla.
+
+---
+
+### `<leader>` · mano izquierda
+
+| Tecla | Acción | Categoría |
+|-------|--------|-----------|
+| `<leader>a` | — | |
+| `<leader>o` | — | |
+| `<leader>e` | Focus NvimTree | File Explorer |
+| `<leader>u` | — | |
+| `<leader>i` | — | |
+| `<leader>p` | → **submenu** | |
+| ↳ `<leader>ph` | Preview hunk | Git |
+| `<leader>y` | — | |
+| `<leader>q` | — | |
+| `<leader>j` | — | |
+| `<leader>k` | — | |
+| `<leader>x` | Close buffer | Buffers |
+
+### `<leader>` · mano derecha
+
+| Tecla | Acción | Categoría |
+|-------|--------|-----------|
+| `<leader>d` | → **submenu** | |
+| ↳ `<leader>ds` | Diagnostics float | LSP |
+| ↳ `<leader>D` | Type definition | LSP |
+| `<leader>h` | — | |
+| `<leader>t` | → **submenu** | |
+| ↳ `<leader>tt` | Float terminal | Terminal |
+| ↳ `<leader>tv` | Vertical terminal | Terminal |
+| ↳ `<leader>th` | Horizontal terminal | Terminal |
+| ↳ `<leader>td` | Toggle deleted lines | Git |
+| `<leader>n` | Toggle NvimTree | File Explorer |
+| `<leader>s` | → **submenu** | |
+| ↳ `<leader>sh` | Signature help | LSP |
+| `<leader>f` | → **submenu** | |
+| ↳ `<leader>ff` | Find files | Telescope |
+| ↳ `<leader>fg` | Live grep | Telescope |
+| ↳ `<leader>fw` | Live grep (NvChad) | Telescope |
+| ↳ `<leader>fb` | Find buffers | Telescope |
+| ↳ `<leader>fh` | Help pages | Telescope |
+| ↳ `<leader>fo` | Recent files | Telescope |
+| ↳ `<leader>fz` | Fuzzy find in buffer | Telescope |
+| ↳ `<leader>fs` | Find/restore sessions | Sessions |
+| `<leader>g` | → **submenu** | |
+| ↳ `<leader>gt` | Git status | Telescope |
+| ↳ `<leader>gb` | Git blame line | Git |
+| `<leader>c` | → **submenu** | |
+| ↳ `<leader>ch` | NvChad cheatsheet | General |
+| ↳ `<leader>ca` | Code action | LSP |
+| ↳ `<leader>cm` | Git commits | Telescope |
+| `<leader>r` | → **submenu** | |
+| ↳ `<leader>rn` | Toggle relative numbers | General |
+| ↳ `<leader>ra` | Rename symbol | LSP |
+| ↳ `<leader>rh` | Reset hunk | Git |
+| `<leader>l` | → **submenu** | |
+| ↳ `<leader>ls` | Toggle Live Server | Live Server |
+| ↳ `<leader>lo` | Open browser (127.0.0.1:5500) | Live Server |
+| `<leader>b` | New buffer | Buffers |
+| `<leader>m` | — | |
+| `<leader>w` | → **submenu** | |
+| ↳ `<leader>wa` | Add workspace folder | LSP |
+| ↳ `<leader>wr` | Remove workspace folder | LSP |
+| ↳ `<leader>wl` | List workspace folders | LSP |
+| `<leader>v` | — | |
+| `<leader>z` | Toggle line numbers | General |
+
+---
+
+### `<C->` · mano izquierda
+
+| Tecla | Modo | Acción | Categoría |
+|-------|------|--------|-----------|
+| `<C-a>` | | — | |
+| `<C-o>` | | — | |
+| `<C-e>` | | — | |
+| `<C-u>` | | — | |
+| `<C-i>` | | — | |
+| `<C-p>` | | — | |
+| `<C-y>` | | — | |
+| `<C-q>` | | — | |
+| `<C-j>` | n | Focus window down | Windows |
+| `<C-k>` | n | Focus window up | Windows |
+| `<C-x>` | NvimTree | Open in horizontal split | NvimTree |
+
+### `<C->` · mano derecha
+
+| Tecla | Modo | Acción | Categoría |
+|-------|------|--------|-----------|
+| `<C-d>` | | — | |
+| `<C-h>` | n | Focus window left | Windows |
+| `<C-t>` | NvimTree | Open in new tab | NvimTree |
+| `<C-n>` | n | Toggle NvimTree | File Explorer |
+| `<C-s>` | n/i/v | Save file | General |
+| `<C-f>` | | — | |
+| `<C-g>` | | — | |
+| `<C-c>` | n | Copy whole file to clipboard | General |
+| `<C-r>` | | — | |
+| `<C-l>` | n | Focus window right | Windows |
+| `<C-b>` | | — | |
+| `<C-m>` | | — | |
+| `<C-w>` | | — | |
+| `<C-v>` | NvimTree | Open in vertical split | NvimTree |
+| `<C-z>` | | — | |
+
+> `<C-Space>` (insert) → Open completion menu
+
+---
+
+### `<A->` · mano izquierda
+
+| Tecla | Modo | Acción | Categoría |
+|-------|------|--------|-----------|
+| `<A-a>` | | — | |
+| `<A-o>` | | — | |
+| `<A-e>` | | — | |
+| `<A-u>` | | — | |
+| `<A-i>` | n | Float terminal (NvChad) | Terminal |
+| `<A-p>` | | — | |
+| `<A-y>` | | — | |
+| `<A-q>` | | — | |
+| `<A-j>` | | — | |
+| `<A-k>` | | — | |
+| `<A-x>` | | — | |
+
+### `<A->` · mano derecha
+
+| Tecla | Modo | Acción | Categoría |
+|-------|------|--------|-----------|
+| `<A-d>` | | — | |
+| `<A-h>` | n | Horizontal terminal (NvChad) | Terminal |
+| `<A-t>` | | — | |
+| `<A-n>` | | — | |
+| `<A-s>` | | — | |
+| `<A-f>` | | — | |
+| `<A-g>` | | — | |
+| `<A-c>` | | — | |
+| `<A-r>` | | — | |
+| `<A-l>` | | — | |
+| `<A-b>` | | — | |
+| `<A-m>` | | — | |
+| `<A-w>` | | — | |
+| `<A-v>` | n | Vertical terminal (NvChad) | Terminal |
+| `<A-z>` | | — | |
