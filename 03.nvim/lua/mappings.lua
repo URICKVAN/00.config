@@ -8,10 +8,19 @@ local map = vim.keymap.set
 
 -- ==== Mapeos personalizados ====
 
--- Reasignación: <leader>n ahora togglea NvimTree (antes era <C-n>)
---               <leader>z ahora togglea line numbers (antes era <leader>n)
+-- Navegación de ventanas (normal mode)
+-- <C-h> izq · <C-n> der · <C-k> arriba · <C-j> abajo  ← NvChad (h/k/j activos)
+-- <C-n>  reemplaza <C-l> (switch right), <C-l> libre
+-- <C-c>  reemplaza <C-k> (switch up),   <C-c> copy-file eliminado
+-- <C-t>  reemplaza <C-j> (switch down)
 vim.keymap.del("n", "<leader>n")
+vim.keymap.del("n", "<C-n>")
+vim.keymap.del("n", "<C-l>")
+vim.keymap.del("n", "<C-c>")
 map("n", "<leader>n", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle NvimTree" })
+map("n", "<C-n>", "<C-w>l", { desc = "switch window right" })
+map("n", "<C-c>", "<C-w>k", { desc = "switch window up" })
+map("n", "<C-t>", "<C-w>j", { desc = "switch window down" })
 map("n", "<leader>z", "<cmd>set nu!<CR>", { desc = "Toggle line numbers" })
 
 -- Normal mode: usa ; para entrar a modo comando (en lugar de Shift+;)
