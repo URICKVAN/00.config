@@ -230,6 +230,16 @@ return {
     lazy = true,
   },
 
+  -- 🌲 NvimTree: mostrar archivos ignorados por git (.env, etc.)
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = {
+      filters = {
+        git_ignored = false,
+      },
+    },
+  },
+
   -- 📄 Render Markdown en el buffer (tablas, headings, code blocks, etc.)
   {
     "MeanderingProgrammer/render-markdown.nvim",
