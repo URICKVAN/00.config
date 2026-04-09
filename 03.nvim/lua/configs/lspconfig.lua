@@ -13,5 +13,15 @@ vim.lsp.config("lua_ls", {
   },
 })
 
+-- JSON Schema Store: asocia schemas automáticamente a archivos conocidos
+vim.lsp.config("jsonls", {
+  settings = {
+    json = {
+      schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
+    },
+  },
+})
+
 -- Habilita los servidores (instalación vía mason-lspconfig ensure_installed)
-vim.lsp.enable({ "html", "cssls", "ts_ls", "pyright", "lua_ls" })
+vim.lsp.enable({ "html", "cssls", "ts_ls", "pyright", "lua_ls", "jsonls" })

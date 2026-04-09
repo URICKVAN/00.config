@@ -50,3 +50,5 @@ eval "$(pyenv init -)"
 # FIN DEL ARCHIVO
 # ======================================================================
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"

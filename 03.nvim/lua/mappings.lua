@@ -42,3 +42,12 @@ map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "Live grep" })
 -- Sesiones
 map("n", "<leader>fs", "<cmd>AutoSession search<CR>", { desc = "Find sessions" })
 
+-- Base de datos (vim-dadbod-ui)
+map("n", "<leader>db", "<cmd>DBUIToggle<CR>",       { desc = "Toggle DB UI" })
+map("n", "<leader>da", "<cmd>DBUIAddConnection<CR>", { desc = "Add DB connection" })
+map("n", "<leader>df", "<cmd>DBUIFindBuffer<CR>",    { desc = "Find DB buffer" })
+
+-- Folding (nvim-ufo)
+map("n", "zR", function() require("ufo").openAllFolds() end,  { desc = "Abrir todos los folds" })
+map("n", "zM", function() require("ufo").closeAllFolds() end, { desc = "Cerrar todos los folds" })
+

@@ -1,6 +1,6 @@
 # Mappings Reference
 
-> Last updated: 2026-03-23
+> Last updated: 2026-04-09
 
 `<leader>` = `Space`
 
@@ -26,7 +26,7 @@ Fuentes: **P** = personal · **N** = NvChad · **V** = Vim nativo · `—` = lib
 | ↳ `<leader>pt` | n | Telescope: pick hidden terminal | N |
 | `<leader>y` | | — | |
 | `<leader>q` | | — | |
-| `<leader>j` | | — | |
+| `<leader>j` | n | Split/join nodo (treesj) | P |
 | `<leader>k` | | — | |
 | `<leader>x` | n | Close buffer | N |
 
@@ -39,6 +39,9 @@ Fuentes: **P** = personal · **N** = NvChad · **V** = Vim nativo · `—` = lib
 | `<leader>d` | | → submenu | |
 | ↳ `<leader>ds` | n | Diagnostics (loclist) | N |
 | ↳ `<leader>D` | n | Type definition | N |
+| ↳ `<leader>db` | n | Toggle DB UI | P |
+| ↳ `<leader>da` | n | Add DB connection | P |
+| ↳ `<leader>df` | n | Find DB buffer | P |
 | `<leader>h` | n | New horizontal terminal | N |
 | `<leader>t` | | → submenu | |
 | ↳ `<leader>tt` | n | Float terminal | P |
@@ -243,6 +246,9 @@ Fuentes: **P** = personal · **N** = NvChad · **V** = Vim nativo · `—` = lib
 | `zz` | n | Center cursor on screen | V |
 | `zt` | n | Scroll cursor to top | V |
 | `zb` | n | Scroll cursor to bottom | V |
+| `za` | n | Toggle fold bajo el cursor | V |
+| `zR` | n | Abrir todos los folds (ufo) | P |
+| `zM` | n | Cerrar todos los folds (ufo) | P |
 
 ---
 
@@ -362,3 +368,59 @@ Activo automáticamente en `*.md`. Sin keymaps — render en tiempo real.
 Sessions se guardan/restauran automáticamente al salir/entrar.
 NvimTree se cierra antes del save y reabre tras restore.
 Directorios suprimidos: `~/`, `~/Downloads`, `~/Desktop`, `/`.
+
+---
+
+## Base de datos · vim-dadbod-ui
+
+| Modo | Tecla | Acción | Fuente |
+|------|-------|--------|--------|
+| n | `<leader>db` | Toggle panel DBUI | P |
+| n | `<leader>da` | Agregar nueva conexión | P |
+| n | `<leader>df` | Encontrar buffer SQL activo | P |
+
+**Dentro del panel DBUI:**
+
+| Tecla | Acción |
+|-------|--------|
+| `A` | Agregar conexión |
+| `d` | Eliminar conexión |
+| `R` | Renombrar conexión |
+| `r` | Recargar/refrescar |
+| `o` / `<CR>` | Abrir/expandir nodo |
+| `W` | Guardar query |
+| `q` | Cerrar panel |
+
+**En buffer SQL:**
+
+| Tecla | Acción |
+|-------|--------|
+| `<leader>S` | Ejecutar query bajo el cursor o selección |
+
+Conexiones guardadas en `~/.local/share/db_ui/connections.json`.
+Soporta URLs con variables de entorno: `$DATABASE_URL`.
+
+---
+
+## Folding · nvim-ufo
+
+| Modo | Tecla | Acción | Fuente |
+|------|-------|--------|--------|
+| n | `zR` | Abrir todos los folds | P |
+| n | `zM` | Cerrar todos los folds | P |
+| n | `za` | Toggle fold individual | V |
+| n | `zc` | Cerrar fold | V |
+| n | `zo` | Abrir fold | V |
+
+Proveedor: treesitter → indent (fallback). Hover sobre fold colapsado muestra preview.
+
+---
+
+## Split/Join · treesj
+
+| Modo | Tecla | Acción | Fuente |
+|------|-------|--------|--------|
+| n | `<leader>j` | Toggle split/join del nodo | P |
+
+Expande o colapsa objetos, arrays, argumentos entre una línea y multilínea.
+Activo en cualquier lenguaje soportado por treesitter (JSON, JS, TS, Python, Lua…).

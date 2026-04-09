@@ -1,7 +1,7 @@
 # NEOVIM_CONTEXT.md
 
 Persistent context document for AI-assisted development of this Neovim configuration.
-Last updated: 2026-03-20. (auto-session added)
+Last updated: 2026-04-09.
 
 ---
 
@@ -117,6 +117,7 @@ Extends `nvchad.options` with:
 - System clipboard integration (`unnamedplus`)
 - Splits: vertical opens right, horizontal opens below
 - `wrap = false`
+- Folding: `foldlevel = 99`, `foldlevelstart = 99`, `foldenable = true` (required for nvim-ufo)
 
 ### Keymaps (`mappings.lua`)
 Extends `nvchad.mappings` with:
@@ -126,6 +127,12 @@ Extends `nvchad.mappings` with:
 - `<leader>ff` → Telescope find_files
 - `<leader>fg` → Telescope live_grep
 - `<leader>fs` → AutoSession search (session picker via Telescope)
+- `<leader>db` → DBUIToggle
+- `<leader>da` → DBUIAddConnection
+- `<leader>df` → DBUIFindBuffer
+- `<leader>j` → TSJToggle (split/join node)
+- `zR` → `ufo.openAllFolds()`
+- `zM` → `ufo.closeAllFolds()`
 
 ### Auto-commands (`autocmds.lua`)
 - `InsertLeave` → auto-format file via conform (aggressive)
@@ -138,20 +145,27 @@ Extends `nvchad.mappings` with:
 |---|---|
 | `nvim-lspconfig` | Delegates to `configs/lspconfig.lua` |
 | `mason.nvim` | `:MasonUpdate` on install |
-| `mason-lspconfig.nvim` | ensure_installed: tsserver, html, cssls, pyright, lua_ls |
+| `mason-lspconfig.nvim` | ensure_installed: tsserver, html, cssls, pyright, lua_ls, jsonls |
 | `conform.nvim` | Delegates to `configs/conform.lua`; format_on_save enabled |
 | `toggleterm.nvim` | Float/vertical/horizontal terminals; Live Server integration |
 | `nvim-ts-autotag` | HTML/JSX/TSX tag auto-close/rename |
 | `nvim-surround` | Surround text with delimiters |
 | `emmet-vim` | Emmet expand: `<C-Z>,` in html/css/jsx/tsx/vue/svelte |
 | `LuaSnip` v2 | VSCode snippets via friendly-snippets; jsregexp build step |
-| `nvim-cmp` | Completion: LSP + LuaSnip + buffer + path sources |
+| `nvim-cmp` | Completion: LSP + LuaSnip + buffer + path sources; dadbod source active on sql/mysql/plsql ft |
 | `nvim-web-devicons` | File type icons |
+| `nvim-tree.lua` | Override: `filters.git_ignored = false` (shows .env and other git-ignored files) |
 | `render-markdown.nvim` | In-buffer Markdown rendering (headings, tables, code blocks, checkboxes, links); active on `ft=markdown` |
 | `auto-session` | Automatic session save/restore; NvimTree closed before save, reopened after restore; Telescope picker via `<leader>fs` |
+| `schemastore.nvim` | Provides JSON Schema Store catalog for jsonls |
+| `nvim-ufo` | Modern folding with treesitter provider and fold preview on hover |
+| `treesj` | Split/join nodes between single-line and multi-line (`<leader>j`) |
+| `vim-dadbod` | Database interface core (PostgreSQL, MySQL, SQLite, Redis…) |
+| `vim-dadbod-ui` | DBUI panel; connections saved in `~/.local/share/db_ui/`; supports `$ENV_VAR` URLs |
+| `vim-dadbod-completion` | SQL completion source for nvim-cmp; active on sql/mysql/plsql filetypes |
 
 ### LSP Servers (`configs/lspconfig.lua`)
-Extends `nvchad.configs.lspconfig.defaults()` with:
+Uses `vim.lsp.config` / `vim.lsp.enable` API (Neovim 0.11+). Extends `nvchad.configs.lspconfig.defaults()`.
 
 | Server | Language | Notes |
 |---|---|---|
@@ -160,6 +174,7 @@ Extends `nvchad.configs.lspconfig.defaults()` with:
 | `ts_ls` | TypeScript / JavaScript | No custom config |
 | `pyright` | Python | No custom config |
 | `lua_ls` | Lua | `globals = {"vim"}` to suppress nvim API warnings |
+| `jsonls` | JSON | Schema validation via `schemastore.nvim`; auto-detects schemas for package.json, tsconfig.json, etc. |
 
 ### Formatters (`configs/conform.lua`)
 
@@ -188,12 +203,9 @@ and rely solely on `format_on_save` in `conform.lua`.
 `lspconfig.lua` configures `"ts_ls"` (current name). These must match.
 In newer mason-lspconfig, use `"ts_ls"` in both places.
 
-### 3. Broken Mason auto-install loop in `lspconfig.lua`
-The loop querying `mason_registry.get_package(server_name)` uses lspconfig
-names (`html`, `cssls`, `ts_ls`) which don't match Mason package names
-(`html-lsp`, `css-lsp`, `typescript-language-server`). Only `pyright` works.
-This loop should be removed — mason-lspconfig's `ensure_installed` already
-handles auto-installation correctly.
+### ~~3. Broken Mason auto-install loop in `lspconfig.lua`~~ ✅ Fixed
+The broken `mason_registry` loop was removed. Installation handled solely by
+`mason-lspconfig.ensure_installed`.
 
 ### 4. macOS-specific `open` command
 `vim.fn.jobstart({ "open", "http://127.0.0.1:5500" })` in `plugins/init.lua`
@@ -238,10 +250,11 @@ Should be conditional: only open when Neovim starts with a directory or no args.
 | Tool | Install |
 |---|---|
 | `live-server` | `npm install -g live-server` |
+| `psql` (client) | `brew install libpq && brew link libpq --force` + add `/opt/homebrew/opt/libpq/bin` to PATH |
 
 ### Mason-Managed (Auto-Installed)
 
-LSP servers: `typescript-language-server`, `html-lsp`, `css-lsp`, `pyright`, `lua-language-server`
+LSP servers: `typescript-language-server`, `html-lsp`, `css-lsp`, `pyright`, `lua-language-server`, `json-lsp`
 
 Formatters (must be installed manually via `:MasonInstall`):
 `prettier`, `black`, `stylua`, `shfmt`

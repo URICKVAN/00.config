@@ -35,3 +35,8 @@ opt.clipboard = "unnamedplus" -- Usa el portapapeles del sistema
 opt.splitright = true         -- Los splits verticales se abren a la derecha
 opt.splitbelow = true         -- Los splits horizontales se abren abajo
 
+-- === Folding (nvim-ufo) ===
+opt.foldlevel = 99            -- Folds abiertos por defecto al abrir archivo
+opt.foldlevelstart = 99
+opt.foldenable = true
+

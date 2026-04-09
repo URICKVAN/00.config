@@ -35,6 +35,7 @@ return {
           "cssls",      -- CSS
           "pyright",    -- Python
           "lua_ls",     -- Lua
+          "jsonls",     -- JSON
         },
       })
     end,
@@ -282,6 +283,67 @@ return {
           load_on_setup = true,
           previewer = false,
         },
+      })
+    end,
+  },
+
+  -- 📋 JSON Schema Store: provee schemas para jsonls (package.json, tsconfig, etc.)
+  {
+    "b0o/schemastore.nvim",
+    lazy = true,
+  },
+
+  -- 🔽 Folding moderno con preview (ufo = ultra fold)
+  {
+    "kevinhwang91/nvim-ufo",
+    dependencies = { "kevinhwang91/promise-async" },
+    event = "BufReadPost",
+    config = function()
+      require("ufo").setup({
+        provider_selector = function()
+          return { "treesitter", "indent" }
+        end,
+      })
+    end,
+  },
+
+  -- 🔀 Split/join nodos (expande/colapsa objetos JSON, arrays, args…)
+  {
+    "Wansmer/treesj",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    keys = {
+      { "<leader>j", "<cmd>TSJToggle<CR>", desc = "Split/join nodo" },
+    },
+    config = function()
+      require("treesj").setup({ use_default_keymaps = false })
+    end,
+  },
+
+  -- 🗄️ Gestor de base de datos (PostgreSQL, MySQL, SQLite, Redis…)
+  {
+    "tpope/vim-dadbod",
+    lazy = true,
+  },
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = { "tpope/vim-dadbod" },
+    cmd = { "DBUI", "DBUIToggle", "DBUIAddConnection", "DBUIFindBuffer" },
+    init = function()
+      vim.g.db_ui_use_nerd_fonts = 1
+      vim.g.db_ui_save_location = vim.fn.expand("~/.local/share/db_ui")
+      vim.g.db_ui_auto_execute_table_helpers = 1
+    end,
+  },
+  {
+    "kristijanhusak/vim-dadbod-completion",
+    dependencies = { "tpope/vim-dadbod" },
+    ft = { "sql", "mysql", "plsql" },
+    config = function()
+      require("cmp").setup.filetype({ "sql", "mysql", "plsql" }, {
+        sources = require("cmp").config.sources({
+          { name = "vim-dadbod-completion" },
+          { name = "buffer" },
+        }),
       })
     end,
   },
