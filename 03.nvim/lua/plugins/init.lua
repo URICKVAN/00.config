@@ -238,6 +238,29 @@ return {
       filters = {
         git_ignored = false,
       },
+      on_attach = function(bufnr)
+        local api = require("nvim-tree.api")
+        api.config.mappings.default_on_attach(bufnr)
+
+        vim.keymap.set("n", "A", function()
+          local node = api.tree.get_node_under_cursor()
+          local base = node and (node.type == "directory" and node.absolute_path
+            or vim.fn.fnamemodify(node.absolute_path, ":h")) or vim.loop.cwd()
+
+          vim.ui.input({ prompt = "Archivo (p.ej. qualitas_.txt): " }, function(input)
+            if not input or input == "" then return end
+            local ts = os.date("%Y%m%d_%H%M%S")
+            local dot = input:find("%.[^.]*$")
+            local final = dot
+              and (input:sub(1, dot - 1) .. ts .. input:sub(dot))
+              or  (input .. ts)
+            local full = base .. "/" .. final
+            vim.fn.writefile({}, full)
+            api.tree.reload()
+            vim.cmd("edit " .. vim.fn.fnameescape(full))
+          end)
+        end, { buffer = bufnr, desc = "Crear archivo con timestamp", nowait = true })
+      end,
     },
   },
 

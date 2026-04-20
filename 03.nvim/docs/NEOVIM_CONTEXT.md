@@ -154,7 +154,7 @@ Extends `nvchad.mappings` with:
 | `LuaSnip` v2 | VSCode snippets via friendly-snippets; jsregexp build step |
 | `nvim-cmp` | Completion: LSP + LuaSnip + buffer + path sources; dadbod source active on sql/mysql/plsql ft |
 | `nvim-web-devicons` | File type icons |
-| `nvim-tree.lua` | Override: `filters.git_ignored = false` (shows .env and other git-ignored files) |
+| `nvim-tree.lua` | Override: `filters.git_ignored = false` (shows .env and other git-ignored files); custom `A` mapping creates file with auto timestamp (`name_.ext` → `name_YYYYMMDD_HHMMSS.ext`), replaces native *expand all* |
 | `render-markdown.nvim` | In-buffer Markdown rendering (headings, tables, code blocks, checkboxes, links); active on `ft=markdown` |
 | `auto-session` | Automatic session save/restore; NvimTree closed before save, reopened after restore; Telescope picker via `<leader>fs` |
 | `schemastore.nvim` | Provides JSON Schema Store catalog for jsonls |

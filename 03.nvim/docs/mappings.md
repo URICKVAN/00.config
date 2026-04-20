@@ -295,6 +295,7 @@ Fuentes: **P** = personal · **N** = NvChad · **V** = Vim nativo · `—` = lib
 |-------|--------|
 | `<CR>` / `o` | Abrir archivo / expandir carpeta |
 | `a` | Crear archivo o directorio |
+| `A` | Crear archivo con timestamp auto (`name_.ext` → `name_YYYYMMDD_HHMMSS.ext`) · P |
 | `d` | Eliminar |
 | `r` | Renombrar |
 | `x` | Cortar |
@@ -310,6 +311,8 @@ Fuentes: **P** = personal · **N** = NvChad · **V** = Vim nativo · `—` = lib
 | `<C-t>` | Abrir en nueva pestaña |
 | `q` | Cerrar NvimTree |
 | `?` | Toggle ayuda |
+
+> **Nota:** `A` sobrescribe la acción nativa de NvimTree *"expand all"* (expandir todas las carpetas recursivamente). Si la necesitas, usa `:lua require('nvim-tree.api').tree.expand_all()`.
 
 ---
 
